@@ -35,7 +35,10 @@ const request = async () => {
 (async() => {
     const arr = await request();
     console.log(arr);
-    //write a function that populates an airtable base with the data in arr through post request(s), the fewer the better
+    //write a function that populates an airtable base through post request(s), the fewer the better
+    for (item of arr) {
+        console.log(`\n${JSON.stringify(item)}`)
+    }
   })();
 
   
