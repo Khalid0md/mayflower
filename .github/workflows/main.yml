@@ -1,0 +1,35 @@
+name:
+  Cron Job
+
+on:
+  # Triggers the workflow every day at 12am
+  schedule:
+    - cron: "0 0 * * *"
+  # Ability to run manually  
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+ 
+jobs:
+  update:
+
+    runs-on: ubuntu-latest
+ 
+    steps:
+    # Downloads repo
+      - name: Checkout
+        uses: 'actions/checkout@v3'
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+    # Runs script
+      - name: Run script
+        run: node src/index.js
