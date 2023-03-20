@@ -1,4 +1,6 @@
 require('dotenv').config();
+const Airtable = require('airtable');
+const base = new Airtable({apiKey: process.env.AIRTABLE_PAT}).base(process.env.AIRTABLE_BASE_ID);
 
 const query = `
   {
@@ -6,9 +8,8 @@ const query = `
       edges {
         node {
           name
-          description
           website
-          reviewsRating
+          description
           votesCount
         }
       }
@@ -21,7 +22,7 @@ const request = async () => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': process.env.API_KEY
+            'Authorization': process.env.PH_API_KEY
         },
         body: JSON.stringify({ query })
         })
@@ -31,15 +32,36 @@ const request = async () => {
     return res;
 }
 
+const updateTable = async (arra) => {
+  // inlcude media in query, slice media array into 1 and use that as the logo
+  base('site-content').create(arra, function(err, records) {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    records.forEach(function(record) {
+      console.log(record.get('name'));
+    });
+  });
+}
+
 
 (async() => {
-    const arr = await request();
+    let arr = await request();
     console.log(arr);
+    const dataArr = [];
     //write a function that populates an airtable base through post request(s), the fewer the better
+    let i = 62;
     for (item of arr) {
-        //send post request to airtable
-        console.log(`\n${JSON.stringify(item)}`)
+        //put the node in each item in a new arrays
+        dataArr.push({fields: item.node});
+        //I need an array of objects, each object has string keys and string values
+        i++;
     }
+    console.log(dataArr);
+
+    //pass dataArr into the updateTable method
+    await updateTable(dataArr);
   })();
 
   
