@@ -38,6 +38,7 @@ jobs:
     # Inits repo and runs script
       - name: Init
         run: npm install && npx tsc --outDir src/bin && npx nodemon ./src/server.ts
+        timeout-minutes: 1
       - name: Hit endpoint
         run: curl http://localhost:4000/updateProducts
         
