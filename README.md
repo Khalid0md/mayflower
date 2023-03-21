@@ -1,4 +1,5 @@
 # mayflower
 A list of trending AI products
-run npm install && node src/index.js to test
+run npm install
+run npm run build
 need a .env file with secrets

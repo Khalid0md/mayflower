@@ -5,7 +5,8 @@
   "main": "server.ts",
   "scripts": {
     "test": "jest",
-    "dev": "nodemon ./src/server.ts"
+    "dev": "nodemon ./src/server.ts",
+    "build": "npx tsc --outDir src/bin"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,9 @@
     "fastify": "^4.14.1",
     "graphql": "^16.6.0",
     "nodemon": "^2.0.21",
+    "ts-node": "10.9.1"
+  },
+  "devDependencies": {
     "typescript": "^5.0.2"
   }
 }
