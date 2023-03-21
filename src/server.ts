@@ -46,4 +46,4 @@ server.get("/updateProducts", async (request, reply) => {
   }
 });
 
-server.listen({ port: 4000 });
+Promise.resolve(server.listen({ port: 4000 }));
