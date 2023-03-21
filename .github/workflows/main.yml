@@ -35,3 +35,9 @@ jobs:
         run: npm install && npx tsc --outDir src/bin && npx nodemon ./src/server.ts
       - name: Hit endpoint
         run: curl http://localhost:4000/updateProducts
+        env:
+          PRODUCT_HUNT_DEVELOPER_TOKEN: ${{ secrets.PRODUCT_HUNT_DEVELOPER_TOKEN }}
+          AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_BASE_ID:  ${{ secrets.AIRTABLE_BASE_ID }}
+          AIRTABLE_TABLE_ID: ${{ secrets.AIRTABLE_TABLE_ID }}
+          
