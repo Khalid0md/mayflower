@@ -11,7 +11,7 @@ export interface Post {
         node: {
           name: string;
         };
-      }[];
+      }[]; //?what is going on here?
     };
     thumbnail: {
       url: string;

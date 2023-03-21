@@ -3,7 +3,7 @@
  */
 export const queryProductsAfterDate = (date: Date) => `
   {
-    posts(order: VOTES, topic: "artificial-intelligence", postedAfter: "${date}") {
+    posts(first: 20, order: VOTES, topic: "artificial-intelligence", postedAfter: "${date}") {
       edges {
         node {
           name

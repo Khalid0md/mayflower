@@ -39,6 +39,11 @@ server.get("/updateProducts", async (request, reply) => {
     const updateAirtable = await formatProductsAndWriteToAirtable(products);
     if (!updateAirtable.success) throw new Error(updateAirtable.error);
 
+    //? clear database then push new data
+    //? handle sorting in frontend with a button for sort by votesCount or sort by recent
+    //? let's change this from an edpoint to a script, our server will be github action runner which is also the cron runner
+    //or we can have the github action trigger this by calling the endpoint
+
     return { success: true };
   } catch (err: any) {
     console.log(err.message);
@@ -46,4 +51,4 @@ server.get("/updateProducts", async (request, reply) => {
   }
 });
 
-server.listen({ port: 4000 });
+server.listen({ port: 4000 }); //? server and server.listen?
