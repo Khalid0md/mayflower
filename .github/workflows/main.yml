@@ -31,5 +31,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
     # Inits repo and runs script
-      - name: Run script
-        run: npm install && node src/index.js
+      - name: Init
+        run: npm install && npx tsc --outDir src/bin && npx nodemon ./src/server.ts
+      - name: Hit endpoint
+        run: curl http://localhost:4000/updateProducts
