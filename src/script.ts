@@ -36,6 +36,7 @@ const run = async (): Promise<Boolean> => {
         // write to airtable
         const updateAirtable = await formatProductsAndWriteToAirtable(products);
         if (!updateAirtable.success) throw new Error(updateAirtable.error);
+        console.log('success');
         return true;
       } catch (err: any) {
         console.log(err.message);
