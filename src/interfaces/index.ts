@@ -1,5 +1,6 @@
 export interface Post {
   node: {
+    id: string;
     name: string;
     website: string;
     description: string;

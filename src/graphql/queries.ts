@@ -6,6 +6,7 @@ export const queryProductsAfterDate = (date: Date) => `
     posts(order: VOTES, topic: "artificial-intelligence", postedAfter: "${date}") {
       edges {
         node {
+          id
           name
           website
           description
