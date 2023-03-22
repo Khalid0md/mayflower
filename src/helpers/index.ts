@@ -44,3 +44,12 @@ export const formatProductsAndWriteToAirtable = async (products: Post[]) => {
     return { error: err.message };
   }
 };
+
+export const acceptPostSubmission = async (submission: Post) => {
+  //create an action on the submit button of the form
+  //this action will trigger this function
+  //this function should add the submission to a database of posts to be reviewed, database will be reviewed by admins and added in manually
+  //this function should add the submission to a database of posts to be reviewed, 
+  //that database should show on an administartor-only page on website, with ability to select posts
+  //and press a button that makes API call to add them to database
+};
