@@ -3,8 +3,6 @@ name:
 
 on:
   # Triggers the workflow every day at 12am
-  schedule:
-    - cron: "0 0 * * *"
   # Ability to run manually  
   workflow_dispatch:
     inputs:
